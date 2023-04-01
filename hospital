@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace C_shlab4
 {
-    class сart 
+    class сard 
     {
         private string name;
         private int age;
