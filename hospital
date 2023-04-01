@@ -19,7 +19,7 @@ namespace C_shlab4
         public class workers
         {
             public class Nurs { }
-            public class doc { }
+            public class Doc { }
 
             public class Chief_medical { }
             
