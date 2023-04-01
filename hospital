@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace C_shlab4
+{
+    class сart 
+    {
+        private string name;
+        private int age;
+        private string diagnosis;
+
+    }
+    public class Hospital
+    {
+        public class workers
+        {
+            public class Nurs { }
+            class doc { }
+
+            public class Chief_medical { }
+            
+
+
+
+        }
+        class сart
+        {
+            private string name;
+            private int age;
+            private string diagnosis;
+            private string status; 
+
+        }
+    }
+    internal class Program
+    {  
+        static void Main(string[] args)
+        {
+        }
+    }
+}
