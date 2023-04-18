@@ -43,3 +43,52 @@ namespace C_shlab4
         }
     }
 }
+
+
+
+/////////////////////////////
+#include <iostream>
+#include <locale.h>
+
+using namespace std;
+
+int main() {
+    //setlocale(LC_ALL, "Russian");
+    int i, j, m, n;
+    int a, b;
+    cout << "Count stroki : "; cin >> m;
+    cout << "Count stlb : "; cin >> n;
+    cout << "Min a:"; cin >> a;
+    cout << "Max b:"; cin >> b;
+
+    if (7 <= m && m <= 17) {
+        if (7 <= n && n <= 15) {
+            int** arr;
+            arr = new int* [n];
+            for (i = 0; i < n; i++) {
+                arr[i] = new int[m];
+                for (j = 0; j < m; j++)
+                   
+                    cout << cout.width(3) + (arr[i][j] = rand() % b + a);
+                    cout << "\n";
+                    if (n <= (a + (b - a) / 8))
+                        if (n >= (b - (b - a) / 8))
+                        {
+                            cout << n;
+                        }
+            }
+           /* for (i = 0; i < n; i++){
+                if ( n <= (a + (b - a) / 8))
+                    if (n >= (b - (b - a) / 8))
+                    {
+                        cout << n; 
+                    }
+                    
+            }*/
+                    
+        }
+    }
+        else { cout << " error: Invalid array size entered"; }
+    return 0; 
+    
+}
