@@ -1,93 +1,40 @@
-#include <iostream>
-#include <string>
-
-using namespace std;
-
-// Define struct for price
-struct Price {
-    int rubles;
-    int kopeks;
+struct complex
+{
+    float re;
+    float im;
 };
 
-// Define struct for time
-struct Time {
-    int hours;
-    int minutes;
-    int seconds;
-};
+complex read()
+{
+    complex c;
+    cout << "Enter real and imaginary part: ";
+    cin >> c.re >> c.im;
+    return c;
+}
 
-// Define struct for date
-struct Date {
-    int day;
-    string month;
-    int year;
-};
+void print(complex c)
+{
+    cout << c.re << " + " << c.im << "i" << endl;
+}
 
-// Define struct for address
-struct Address {
-    int index;
-    string city;
-    string street;
-    int houseNumber;
-    int apartmentNumber;
-};
+complex add(complex a, complex b)
+{
+    complex c;
+    c.re = a.re + b.re;
+    c.im = a.im + b.im;
+    return c;
+}
 
-// Define struct for student
-struct Student {
-    string lastName;
-    string firstName;
-    string middleName;
-    int recordBookNumber;
-    int examScore;
-};
-
-// Define struct for exam record
-struct ExamRecord {
-    string subject;
-    int groupNumber;
-    Date examDate;
-    Student students[30];
-};
-
-int main() {
-    // Define variables of each struct type
-    Price price1 = {10, 99};
-    Time time1 = {14, 30, 0};
-    Date date1 = {1, "January", 2022};
-    Address address1 = {123456, "Moscow", "Lenin Street", 1, 10};
-    ExamRecord examRecord1 = {"Mathematics", 101, {10, "February", 2022}, {
-        {"Ivanov", "Ivan", "Ivanovich", 123456, 4},
-        {"Petrov", "Petr", "Petrovich", 234567, 5},
-        // Add more students here
-    }};
-
-    // Access elements of each struct using variables
-    cout << "Price: " << price1.rubles << " rubles " << price1.kopeks << " kopeks" << endl;
-    cout << "Time: " << time1.hours << ":" << time1.minutes << ":" << time1.seconds << endl;
-    cout << "Date: " << date1.day << " " << date1.month << " " << date1.year << endl;
-    cout << "Address: " << address1.index << ", " << address1.city << ", " << address1.street << ", " << address1.houseNumber << ", " << address1.apartmentNumber << endl;
-    cout << "Exam Record: " << examRecord1.subject << ", Group " << examRecord1.groupNumber << ", Date: " << examRecord1.examDate.day << " " << examRecord1.examDate.month << " " << examRecord1.examDate.year << endl;
-    cout << "Students:" << endl;
-    for (int i = 0; i < 30; i++) {
-        cout << examRecord1.students[i].lastName << " " << examRecord1.students[i].firstName << " " << examRecord1.students[i].middleName << ", Record Book Number: " << examRecord1.students[i].recordBookNumber << ", Exam Score: " << examRecord1.students[i].examScore << endl;
-    }
-
-    // Access elements of each struct using pointers
-    Price* pricePtr = &price1;
-    cout << "Price: " << pricePtr->rubles << " rubles " << pricePtr->kopeks << " kopeks" << endl;
-    Time* timePtr = &time1;
-    cout << "Time: " << timePtr->hours << ":" << timePtr->minutes << ":" << timePtr->seconds << endl;
-    Date* datePtr = &date1;
-    cout << "Date: " << datePtr->day << " " << datePtr->month << " " << datePtr->year << endl;
-    Address* addressPtr = &address1;
-    cout << "Address: " << addressPtr->index << ", " << addressPtr->city << ", " << addressPtr->street << ", " << addressPtr->houseNumber << ", " << addressPtr->apartmentNumber << endl;
-    ExamRecord* examRecordPtr = &examRecord1;
-    cout << "Exam Record: " << examRecordPtr->subject << ", Group " << examRecordPtr->groupNumber << ", Date: " << examRecordPtr->examDate.day << " " << examRecordPtr->examDate.month << " " << examRecordPtr->examDate.year << endl;
-    cout << "Students:" << endl;
-    for (int i = 0; i < 30; i++) {
-        cout << examRecordPtr->students[i].lastName << " " << examRecordPtr->students[i].firstName << " " << examRecordPtr->students[i].middleName << ", Record Book Number: " << examRecordPtr->students[i].recordBookNumber << ", Exam Score: " << examRecordPtr->students[i].examScore << endl;
-    }
-
+int main()
+{
+    complex a, b, c;
+    cout << "Enter the first complex number:\n";
+    a = read();
+    cout << "Enter the second complex number:\n";
+    b = read();
+    c = add(a, b);
+    cout << "The sum of the two complex numbers is:\n";
+    print(c);
     return 0;
 }
 
