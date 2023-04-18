@@ -1,46 +1,57 @@
-struct complex
-{
-    float re;
-    float im;
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Student {
+    string surname;
+    string name;
+    string patronymic;
+    char gender;
+    int age;
+    int course;
+    double gpa;
 };
 
-complex read()
-{
-    complex c;
-    cout << "Enter real and imaginary part: ";
-    cin >> c.re >> c.im;
-    return c;
-}
+int main() {
+    const int MAX_STUDENTS = 100;
+    Student students[MAX_STUDENTS];
+    int numStudents;
+    double totalGpa = 0;
+    int numMales = 0;
 
-void print(complex c)
-{
-    cout << c.re << " + " << c.im << "i" << endl;
-}
+    cout << "Enter the number of students: ";
+    cin >> numStudents;
 
-complex add(complex a, complex b)
-{
-    complex c;
-    c.re = a.re + b.re;
-    c.im = a.im + b.im;
-    return c;
-}
+    for (int i = 0; i < numStudents; i++) {
+        cout << "Student #" << i+1 << endl;
+        cout << "Surname: ";
+        cin >> students[i].surname;
+        cout << "Name: ";
+        cin >> students[i].name;
+        cout << "Patronymic: ";
+        cin >> students[i].patronymic;
+        cout << "Gender (M/F): ";
+        cin >> students[i].gender;
+        cout << "Age: ";
+        cin >> students[i].age;
+        cout << "Course: ";
+        cin >> students[i].course;
+        cout << "GPA: ";
+        cin >> students[i].gpa;
 
-int main()
-{
-    complex a, b, c;
-    cout << "Enter the first complex number:\n";
-    a = read();
-    cout << "Enter the second complex number:\n";
-    b = read();
-    c = add(a, b);
-    cout << "The sum of the two complex numbers is:\n";
-    print(c);
+        totalGpa += students[i].gpa;
+
+        if (students[i].gender == 'M' && students[i].course == numStudents) {
+            if (students[i].gpa < totalGpa/numStudents) {
+                numMales++;
+            }
+        }
+    }
+
+    cout << "Number of male students on course " << numStudents << " with GPA below average: " << numMales << endl;
+
     return 0;
 }
-
-
-
-
 
 
 
