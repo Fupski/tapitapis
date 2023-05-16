@@ -1,0 +1,41 @@
+#include <iostream>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+bool proverka(string A) {
+    stack<char> st;
+
+    for (char c : A) {
+        if (c == '(' || c == '[' || c == '{') {
+            st.push(c);
+        }
+        else if (c == ')' || c == ']' || c == '}') {
+            if (st.empty()) {
+                return false;
+            }
+            else if ((c == ')' && st.top() == '(') ||
+                (c == ']' && st.top() == '[') ||
+                (c == '}' && st.top() == '{')) {
+                st.pop();
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    return st.empty();
+}
+
+int main() {
+    string A;
+    cin >> A;
+    if (proverka(A)) {
+        cout << "Pravilno" << endl;
+    }
+    else {
+        cout << "Nepravilno" << endl;
+    }
+    return 0;
+}
