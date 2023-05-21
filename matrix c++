@@ -15,19 +15,18 @@ int main()
 {
     while (true) {
         cout << "------------------------------------------------" << endl;
-        setlocale(LC_ALL, "Russian");
         double a, b;
         double** p; // создали указатель на указатель
         int n, m, i, j, k;
 
 
-        cout << "Введите количество строк матрицы: "; cin >> n;
-        cout << "Введите количество столбцов матрицы: "; cin >> m;
-        if ( 7 <= m && m <= 17 || 7 <= n && n <= 15) {
-             
-             
+        cout << "Enter the number of matrix rows: "; cin >> n;
+        cout << "Enter the number of matrix columns : "; cin >> m;
+        if (7 <= m && m <= 17 || 7 <= n && n <= 15) {
 
-            cout << "Введите диапазон значений матрицы: "; cin >> a >> b;
+
+
+            cout << "Enter a range of matrix values: "; cin >> a >> b;
 
             p = new double* [n]; // Создание вспомогательного массива указателей (т.е. массив в динамической памяти, кот. состоит из указателей
             //каждый элемент массива-указатель
@@ -38,14 +37,14 @@ int main()
                 p[i] = new double[m]; //инициализация указателей, из кот. состоит массив
             }
             matrix(n, m, a, b, p);   //добавляем функцию
-            cout << "       Сформирована матрица:" << endl;
+            cout << "Matrix formed :" << endl;
             cout << endl;
             for (i = 0; i < n; i++) {
                 for (j = 0; j < m; j++) cout << '\t' << p[i][j];  // \t-табуляция 
                 cout << endl;
             }
             cout << endl;
-            cout << "Указанный диапазон: " << "[" << a + (b - a) / 8 << "; " << b - (b - a) / 8 << "]" << endl;
+            cout << "Specified range : " << "[" << a + (b - a) / 8 << "; " << b - (b - a) / 8 << "]" << endl;
 
             int nomer = 0;     //номер элемента столбца
             for (j = 0; j < m; j++)     //i,n кол-во строк(ширина матрицы)
@@ -55,19 +54,19 @@ int main()
                     if (p[i][j] >= (a + (b - a) / 8) && p[i][j] <= (b - (b - a) / 8))
                     {
                         nomer++;
-                         if ((j = m - 1) && nomer == 0) cout << "Таких столбцов нет";
-                         nomer = 0;
+                        if ((j = m - 1) && nomer == 0) cout << "There are no such columns.";
+                        nomer = 0;
                     }
 
                 }
                 if (nomer >= 3 && nomer <= 4)  //если уже набралось 3-4 элемента, выводим фразу
                 {
-                    cout << "В " << j + 1 << "-ом столбце: " << nomer << " числа находятся в указанном диапазоне." << endl;
+                    cout << "В " << j + 1 << "- column: " << nomer << " the numbers are in the specified range." << endl;
                     nomer = 0;
                 }
                 //else cout << "В " << j + 1 << "-ом столбце нет чисел в диапазоне." << endl;
 
-                     if ((j = m - 1) && nomer == 0) cout << "Таких столбцов нет";
+                if ((j = m - 1) && nomer == 0) cout << "There are no such columns.";
                 nomer = 0;
             }
 
@@ -86,9 +85,9 @@ int main()
         else {
             do
             {
-                cout << "ERROR! Введите корректное число строк и столбцов! " << endl;
-                cout << "Введите количество строк матрицы: "; cin >> n;
-                cout << "Введите количество столбцов матрицы: "; cin >> m;
+                cout << "ERROR! Enter the correct number of rows and columns! " << endl;
+                cout << "Enter the number of matrix rows : "; cin >> n;
+                cout << "Enter the number of matrix columns: "; cin >> m;
             } while (7 <= m && m <= 17 || 7 <= n && n <= 15);
         }
     }
