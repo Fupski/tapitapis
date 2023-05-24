@@ -39,3 +39,73 @@ int main() {
     }
     return 0;
 }
+using System;
+using System.Collections.Generic;
+
+class Patient
+{
+    public List<string> Diagnoses { get; set; }
+    public List<string> Procedures { get; set; }
+
+    public Patient()
+    {
+        Diagnoses = new List<string>();
+        Procedures = new List<string>();
+    }
+}
+
+class Doctor
+{
+    public void DoInitialExam(Patient patient)
+    {
+        // провести начальный осмотр пациента
+    }
+
+    public void PrescribeTreatment(Patient patient)
+    {
+        // назначить лечение
+    }
+}
+
+class Nurse
+{
+    public void DoProcedure(Patient patient)
+    {
+        // провести процедуру
+    }
+}
+
+class Hospital
+{
+    public List<Patient> Patients { get; set; }
+
+    public Hospital()
+    {
+        Patients = new List<Patient>();
+    }
+
+    public void AdmitPatient(Patient patient, Doctor doctor)
+    {
+        doctor.DoInitialExam(patient);
+        // направить пациента в отделение
+    }
+
+    public void AssignProcedure(Patient patient, Nurse nurse, string procedure)
+    {
+        patient.Procedures.Add(procedure);
+        nurse.DoProcedure(patient);
+        // записать процедуру в карту пациента
+    }
+
+    public void AssignDiagnosis(Patient patient, Doctor doctor, string diagnosis)
+    {
+        patient.Diagnoses.Add(diagnosis);
+        // записать диагноз в карту пациента
+    }
+
+    public void DischargePatient(Patient patient)
+    {
+        Patients.Remove(patient);
+        // выписать пациента из больницы
+    }
+}
