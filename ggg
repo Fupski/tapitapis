@@ -1,0 +1,93 @@
+namespace Progression
+{
+    class Program
+    {
+        public abstract class Progression
+        {
+            protected long first;
+            protected long cur;
+
+            public Progression(long start)
+            {
+                first = cur = start;
+            }
+
+            public long firstValue()
+            {
+                cur = first;
+                return cur;
+            }
+
+            public long nextValue()
+            {
+                return cur = advance();
+            }
+
+            public abstract long advance();
+            public abstract long sum(long n);
+        }
+
+        public class ArithmeticProgression : Progression
+        {
+            protected long d;
+
+            public ArithmeticProgression(long start, long diff) : base(start)
+            {
+                d = diff;
+            }
+
+            public override long advance()
+            {
+                cur += d;
+                return cur;
+            }
+
+            public override long sum(long n)
+            {
+                long sum = 0;
+                for (long i = 0; i < n; i++)
+                {
+                    sum += nextValue();
+                }
+                return sum;
+            }
+        }
+
+        public class GeometricProgression : Progression
+        {
+            protected long baseNum;
+
+            public GeometricProgression(long start, long baseNum) : base(start)
+            {
+                this.baseNum = baseNum;
+            }
+
+            public override long advance()
+            {
+                cur *= baseNum;
+                return cur;
+            }
+
+            public override long sum(long n)
+            {
+                long sum = 0;
+                for (long i = 0; i < n; i++)
+                {
+                    sum += nextValue();
+                }
+                return sum;
+            }
+            static void Main(string[] args)
+            {
+
+                Progression prog = new ArithmeticProgression(2, 3);
+                Console.WriteLine(prog.nextValue()); // 5
+                Console.WriteLine(prog.sum(5)); // 40
+
+                Progression prog2 = new GeometricProgression(2, 3);
+                Console.WriteLine(prog2.nextValue()); // 6
+                Console.WriteLine(prog2.sum(5)); // 364
+            }
+        }
+    }
+}
