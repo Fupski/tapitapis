@@ -109,3 +109,72 @@ class Hospital
         // выписать пациента из больницы
     }
 }
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+namespace Complex
+{
+    class Program
+    {
+       
+        public class Complex
+        {
+            private double real;
+            private double imaginary;
+
+            public Complex(double real, double imaginary)
+            {
+                this.real = real;
+                this.imaginary = imaginary;
+            }
+
+            public static Complex Add(Complex a, Complex b)
+            {
+                return new Complex(a.real + b.real, a.imaginary + b.imaginary);
+            }
+
+            public static Complex Subtract(Complex a, Complex b)
+            {
+                return new Complex(a.real - b.real, a.imaginary - b.imaginary);
+            }
+
+            public static Complex Multiply(Complex a, Complex b)
+            {
+                double real = (a.real * b.real) - (a.imaginary * b.imaginary);
+                double imaginary = (a.real * b.imaginary) + (a.imaginary * b.real);
+                return new Complex(real, imaginary);
+            }
+
+            public static Complex Divide(Complex a, Complex b)
+            {
+                double denominator = (b.real * b.real) + (b.imaginary * b.imaginary);
+                if (denominator == 0)
+                {
+                    Console.WriteLine("Division by zero error.");
+                    return null;
+                }
+                double real = ((a.real * b.real) + (a.imaginary * b.imaginary)) / denominator;
+                double imaginary = ((b.real * a.imaginary) - (a.real * b.imaginary)) / denominator;
+                return new Complex(real, imaginary);
+            }
+            static void Main(string[] args)
+            {
+                Complex a = new Complex(2,2);
+                Complex b = new Complex(3,3);
+                Console.WriteLine(Add);
+                Console.WriteLine(Subtract);
+                Console.WriteLine(Multiply);
+                Console.WriteLine(Divide);
+
+                
+
+                
+
+                
+            }
+        }
+    }
+}
